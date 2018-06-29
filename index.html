@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <!--By Gayani Gunasekera
+        Created on  : 20/06/18
+        Last update : 20/06/18
+        Responsive Images with Art Direction
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Responsive Images with Art Direction</title>
+  </head>
+  <body>
+        <header>
+          <nav>
+          </nav>
+        </header>
+        <main>
+          <div class="solution-1 box">
+            <h1>Resolution switching: Different sizes</h1>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images"> Link to developer.mozilla.org </a>
+            <div class="subbox">
+              <h2>Original Size:</h2>
+              <img src="images/cat1-original.jpg" alt="CAT Original size">
+            </div>
+            <div class="subbox">
+              <h2>Resolution switching 1: Different sizes</h2>
+              <p>We can however use two new attributes  — <code>srcset</code> and <code>sizes</code> — to provide several additional source images along with hints to help the browser pick the right one. </p>
+              <img srcset="images/cat1-small.jpg 320w,
+                           images/cat1-medium.jpg 480w,
+                           images/cat1-large.jpg 800w,
+                           images/cat1-original.jpg 1920w"
+                  sizes="(max-width: 320px) 280px,
+                          (max-width: 480px) 440px,
+                          (max-width: 860px) 780px,
+                          1920px"
+              src="images/cat1-original.jpg" alt="CAT Original size">
+            </div>
+            <div class="subbox">
+              <h2>Resolution switching 2: Same size, different resolutions (devicePixelRatio)</h2>
+              <p>You can allow the browser to choose an appropriate resolution
+                image by using <code>srcset</code> with x-descriptors and without <code>sizes</code>— a somewhat easier syntax! </p>
+              <img id="img2" srcset="images/cat1-small.jpg,
+                           images/cat1-medium.jpg 3x,
+                           images/cat1-original.jpg 4x"
+              src="images/cat1-original.jpg" alt="Cat Original size">
+            </div>
+          </div>
+          <div class="solution-2 box">
+            <h1>Art direction</h1>
+            <div class="subbox">
+              <!-- <p>Let's fix this, with <strong>&lt;picture&gt;</strong>! Like <strong>&lt;video&gt;</strong> and <strong>&lt;audio&gt;</strong>, The <strong>&lt;picture&gt;</strong> element is a
+                wrapper containing several <strong>&lt;source&gt;</strong> elements that provide
+                  several different sources for the browser to choose between, followed by the all-important <img> element. </p> -->
+              <picture>
+                  <source media="(max-width:320px)"  srcset="images/cat1-ART_DIRECTED-small.jpg"><!--572px-->
+                  <source media="(max-width:640px)"  srcset="images/cat1-ART_DIRECTED-medium.jpg"><!--634px  -->
+                  <source media="(max-width:960px)"  srcset="images/cat1-ART_DIRECTED-large.jpg"><!--745px -->
+                  <source media="(min-width:961px)"  srcset="images/cat1-ART_DIRECTEDXlarge.jpg"><!-- 1920px -->
+                    <!-- cat1-ART_DIRECTED.jpg is now size of 1246px -->
+                  <img src="cat1-ART_DIRECTED.jpg" alt="CAT art direction"> <!--1246px after crop -->
+              </picture>
+              </div>
+          </div>
+        </main>
+        <footer>
+        </footer>
+
+  </body>
+</html>
